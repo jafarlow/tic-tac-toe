@@ -6,10 +6,11 @@ const getFormFields = require("./../../../lib/get-form-fields.js")
 //
 const onChooseTile = function (event) {
   event.preventDefault()
+  console.log("I've been clicked!");
 
-  api.chooseTile()
+/*  api.chooseTile()
     .then(ui.chooseTileSuccess)
-    .catch(ui.chooseTileFailure)
+    .catch(ui.chooseTileFailure)*/
 }
 
 
