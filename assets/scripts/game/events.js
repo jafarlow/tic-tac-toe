@@ -9,6 +9,35 @@ console.log("current player is " + currentPlayer);
 
 const gameBoard = ["","","","","","","","",""]
 
+const gameOver = function (array) {
+  // determine if gameBoard has been filled with X or O
+  const isFull = function (array) {
+    for (let i = 0; i < array.length; i++) {
+      if (typeOf array[i] === "undefined" || typeOf array[i] === null) {
+        return false
+      }
+    }
+    return true
+  }
+  // Is the game over? -- win/tie
+  if ((gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && currentPlayer === gameBoard[0])
+  || (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && currentPlayer === gameBoard[3])
+  || (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && currentPlayer === gameBoard[6])
+  || (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && currentPlayer === gameBoard[0])
+  || (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && currentPlayer === gameBoard[1])
+  || (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && currentPlayer === gameBoard[2])
+  || (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && currentPlayer === gameBoard[0])
+  || (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && currentPlayer === gameBoard[2])) {
+    console.log(currentPlayer + " wins!");
+  } else if (isFull()) {
+    console.log("It's a draw");
+  } else {
+    console.log("It's " + currentPlayer + "'s turn'");
+  }
+}
+
+
+
 //TILE INTERACTION
 const onChooseTile = function (event) {
   event.preventDefault()
@@ -22,6 +51,8 @@ const onChooseTile = function (event) {
     const index = $(event.target).data("id")
     gameBoard[index] = currentPlayer
     console.log(gameBoard);
+    // Check the win condition
+    gameOver()
     //CHANGE PLAYER
     if (currentPlayer === "X") {
       currentPlayer = "O"
@@ -33,20 +64,8 @@ const onChooseTile = function (event) {
     alert("That cell is taken!")
   }
 
-  const gameOver = function (gameBoard, currentPlayer) {
-    // Is the game over? -- win/tie
-    if ((gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && currentPlayer === 0)
-    || (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5])
-    || (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8])
-    || (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6])
-    || (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7])
-    || (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8])
-    || (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8])
-    || (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6])) {
-      console.log(currentPlayer + " wins!");
-    }
 
-  }
+}
 
 
 /*(gameBoard[0] === gameBoard[1] === gameBoard[2])
@@ -68,7 +87,7 @@ const onChooseTile = function (event) {
 /*  api.chooseTile()
     .then(ui.chooseTileSuccess)
     .catch(ui.chooseTileFailure)*/
-}
+
 
 
 //ALL HANDLERS
