@@ -13,7 +13,7 @@ const gameOver = function (array) {
   // determine if gameBoard has been filled with X or O
   const isFull = function (array) {
     for (let i = 0; i < array.length; i++) {
-      if (typeOf array[i] === "undefined" || typeOf array[i] === null) {
+      if (array[i] === "") {
         return false
       }
     }
@@ -28,8 +28,10 @@ const gameOver = function (array) {
   || (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && currentPlayer === gameBoard[2])
   || (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && currentPlayer === gameBoard[0])
   || (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && currentPlayer === gameBoard[2])) {
-    console.log(currentPlayer + " wins!");
-  } else if (isFull()) {
+    console.log(currentPlayer + " wins!")
+    // TURN OFF THE CLICK HANDLER WHEN WINNING
+    $(".tile").off("click", onChooseTile)
+  } else if (isFull(gameBoard)) {
     console.log("It's a draw");
   } else {
     console.log("It's " + currentPlayer + "'s turn'");
@@ -63,25 +65,7 @@ const onChooseTile = function (event) {
     //ALERTS ARE BAD, BUT GOOD FOR INITIAL TESTING
     alert("That cell is taken!")
   }
-
-
 }
-
-
-/*(gameBoard[0] === gameBoard[1] === gameBoard[2])
-  || (gameBoard[3] === gameBoard[4] === gameBoard[5])
-  || (gameBoard[6] === gameBoard[7] === gameBoard[8])
-  || (gameBoard[0] === gameBoard[3] === gameBoard[6])
-  || (gameBoard[1] === gameBoard[4] === gameBoard[7])
-  || (gameBoard[2] === gameBoard[5] === gameBoard[8])
-  || (gameBoard[0] === gameBoard[4] === gameBoard[8])
-  || (gameBoard[2] === gameBoard[4] === gameBoard[6])*/
-
-/*(row-1 !== "" && (row-1 === "X" || row-1 === "O"))
-  || (row-2 !== "" && (row-2 === "X" || row-2 === "O"))
-  || (row-3 !== "" && (row-3 === "X" || row-3 === "O"))
-  || (diag-1 !== "" && (diag-1 === "X" || diag-1 === "O"))
-  || (diag-2 !== "" && (diag-2 === "X" || diag-2 === "O"))*/
 
 //DO THIS PART LAST!!
 /*  api.chooseTile()
