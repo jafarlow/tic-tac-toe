@@ -18,10 +18,12 @@ const loginFailure = function () {
 //REGISTER
 const registerSuccess = function () {
   console.log("Registration was successful!")
+  $("form").trigger("reset")
 }
 
 const registerFailure = function () {
   console.log("Registration failed")
+  $("form").trigger("reset")
 }
 
 module.exports = {
