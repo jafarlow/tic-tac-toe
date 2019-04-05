@@ -34,6 +34,7 @@ NEED TO DISPLAY IT ALL INLINE -- inline flex?
   border: 1px solid black;
   justify-content: center;
   align-items: center;
+  display: none; //turn on once Start Game is clicked
 }
 
 .modal-header {
@@ -48,4 +49,9 @@ NEED TO DISPLAY IT ALL INLINE -- inline flex?
 .modal-footer {
   display: flex;
   justify-content: center;
+}
+
+.inline-button {
+  display: inline-flex;
+  justify-content: space-between;
 }

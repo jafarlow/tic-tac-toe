@@ -69,11 +69,17 @@ const onChooseTile = function (event) {
     .then(ui.chooseTileSuccess)
     .catch(ui.chooseTileFailure)*/
 
+const onStartGame = function (event) {
+  event.preventDefault()
 
+  // open the board to interaction
+  $(".tile").show()
+}
 
 //ALL HANDLERS
 const addHandlers = function () {
   $(".tile").on("click", onChooseTile)
+  $("#start-game").on("click", onStartGame)
 }
 
 module.exports = {
