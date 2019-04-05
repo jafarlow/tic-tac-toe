@@ -22,6 +22,33 @@
 
       <button type="button" id="logout">Logout</button>
 
+      <!--MODAL CHANGE PASSWORD FORM PULLED FROM BOOTSTRAP-->
+      <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Change password</h4>
+              <!--this puts the "x" in the corner-->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form id="change-password">
+
+                <input type="password" class="form-control validate" name="passwords[old]" placeholder="Current password" required>
+
+                <input type="password" class="form-control validate" name="passwords[new]" placeholder="New password" required>
+
+              <button class="modal-footer" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-left">
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalChangePassword">Change password</a>
+      </div>
+
       <!--MODAL REGISTER FORM PULLED FROM BOOTSTRAP-->
       <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -35,11 +62,11 @@
             </div>
             <form id="register">
 
-                <input type="email" id="orangeForm-email" class="form-control validate" name="credentials[email]" placeholder="Your email" required>
+                <input type="email" class="form-control validate" name="credentials[email]" placeholder="Your email" required>
 
-                <input type="password" id="orangeForm-pass" class="form-control validate" name="credentials[password]" placeholder="Choose password" required>
+                <input type="password" class="form-control validate" name="credentials[password]" placeholder="Choose password" required>
 
-                <input type="password" id="orangeForm-pass-conf" class="form-control validate" name="credentials[password_confirmation]" placeholder="Confirm password" required>
+                <input type="password" class="form-control validate" name="credentials[password_confirmation]" placeholder="Confirm password" required>
 
               <button class="modal-footer" type="submit">Register</button>
             </form>

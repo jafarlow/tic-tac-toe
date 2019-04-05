@@ -4,24 +4,24 @@
 const store = require("../store")
 
 //REGISTER
-const registerSuccess = function () {
+const registerSuccess = function (data) {
   console.log("Registration was successful!")
   $("form").trigger("reset")
 }
 
-const registerFailure = function () {
+const registerFailure = function (data) {
   console.log("Registration failed")
   $("form").trigger("reset")
 }
 
 //LOGIN
-const loginSuccess = function () {
+const loginSuccess = function (data) {
   console.log("Login was successful!", data);
   store.user = data.user
   $("form").trigger("reset")
 }
 
-const loginFailure = function () {
+const loginFailure = function (data) {
   console.log("Login failed")
   $("form").trigger("reset")
 }
@@ -36,11 +36,23 @@ const logoutFailure = function () {
   console.log("User logout has failed");
 }
 
+const changePasswordSuccess = function () {
+  console.log("Change password success");
+  $("form").trigger("reset")
+}
+
+const changePasswordFailure = function () {
+  console.log("Change password failure");
+  $("form").trigger("reset")
+}
+
 module.exports = {
   registerSuccess,
   registerFailure,
   loginSuccess,
   loginFailure,
   logoutSuccess,
-  logoutFailure
+  logoutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
