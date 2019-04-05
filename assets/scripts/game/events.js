@@ -5,7 +5,7 @@ const getFormFields = require("./../../../lib/get-form-fields.js")
 
 //SET CURRENT PLAYER -- will be updated in the function below based on turn
 let currentPlayer = "X"
-console.log("current player is " + currentPlayer);
+
 
 const gameBoard = ["","","","","","","","",""]
 
@@ -28,13 +28,19 @@ const gameOver = function (array) {
   || (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && currentPlayer === gameBoard[2])
   || (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && currentPlayer === gameBoard[0])
   || (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && currentPlayer === gameBoard[2])) {
-    console.log(currentPlayer + " wins!")
+    $("#message").text("Player " + currentPlayer + " wins!")
     // TURN OFF THE CLICK HANDLER WHEN WINNING
     $(".tile").off("click", onChooseTile)
   } else if (isFull(gameBoard)) {
-    console.log("It's a draw");
+      $("#message").text("It's a draw")
   } else {
-    console.log("It's " + currentPlayer + "'s turn'");
+      //CHANGE PLAYER
+      if (currentPlayer === "X") {
+        currentPlayer = "O"
+      } else {
+        currentPlayer = "X"
+      }
+    $("#message").text("Player " + currentPlayer + "'s turn")
   }
 }
 
@@ -43,7 +49,6 @@ const gameOver = function (array) {
 //TILE INTERACTION
 const onChooseTile = function (event) {
   event.preventDefault()
-  console.log("I've been clicked!");
 
   // is the box empty? -- .text getter!
   if ($(event.target).text() === "") {
@@ -52,18 +57,10 @@ const onChooseTile = function (event) {
     // update the array index with clicked tile value
     const index = $(event.target).data("id")
     gameBoard[index] = currentPlayer
-    console.log(gameBoard);
     // Check the win condition
     gameOver()
-    //CHANGE PLAYER
-    if (currentPlayer === "X") {
-      currentPlayer = "O"
-    } else {
-      currentPlayer = "X"
-    }
   } else {
-    //ALERTS ARE BAD, BUT GOOD FOR INITIAL TESTING
-    alert("That cell is taken!")
+    $("#message").text("That cell is taken!")
   }
 }
 
