@@ -20,6 +20,7 @@
         <button type="submit">LOGIN</button>
       </form>
 
+      <button type="button" id="logout">Logout</button>
 
       <!--MODAL REGISTER FORM PULLED FROM BOOTSTRAP-->
       <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -27,24 +28,21 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Register</h4>
+              <!--this puts the "x" in the corner-->
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body mx-3">
+            <form id="register">
 
-              <div class="md-form mb-5">
-                <input type="email" id="orangeForm-email" class="form-control validate" placeholder="Your email" required>
-              </div>
+                <input type="email" id="orangeForm-email" class="form-control validate" name="credentials[email]" placeholder="Your email" required>
 
-              <div class="md-form mb-4">
-                <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="********" required>
-              </div>
+                <input type="password" id="orangeForm-pass" class="form-control validate" name="credentials[password]" placeholder="Choose password" required>
 
-            </div>
-            <div class="modal-footer" id="register">
-              <button class="submit">Register</button>
-            </div>
+                <input type="password" id="orangeForm-pass-conf" class="form-control validate" name="credentials[password_confirmation]" placeholder="Confirm password" required>
+
+              <button class="modal-footer" type="submit">Register</button>
+            </form>
           </div>
         </div>
       </div>

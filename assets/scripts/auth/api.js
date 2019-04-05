@@ -4,6 +4,15 @@
 const config = require("../config")
 const store = require("../store")
 
+//REGISTER
+const register = function (data) {
+  return $.ajax({
+    url: config.apiUrl + "/sign-up",
+    method: "POST",
+    data: data
+  })
+}
+
 //LOGIN
 const login = function (data) {
   return $.ajax({
@@ -13,16 +22,19 @@ const login = function (data) {
   })
 }
 
-//REGISTER
-const register = function (data) {
-  return $.ajax ({
-    url: config.apiUrl + "/sign-up",
-    method: "POST",
-    data: data
+//LOGOUT
+const logout = function () {
+  return $.ajax({
+    url: config.apiUrl + "/sign-out",
+    method: "DELETE",
+    headers: {
+      Authorization: "Token token=" + store.user.token
+    }
   })
 }
 
 module.exports = {
+  register,
   login,
-  register
+  logout
 }
