@@ -1,5 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  width: 80%;
+}
+
+h1 {
+  text-align: center;
+}
+
 
 .game-board {
   width: 600px;
@@ -13,4 +21,18 @@
   border: 1px solid black;
   justify-content: center;
   align-items: center;
+}
+
+.modal-header {
+  text-align: center;
+}
+
+.modal-title {
+  width: 100%;
+  font-weight: bold;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
 }

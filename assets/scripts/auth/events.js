@@ -29,7 +29,7 @@ const onRegister = function (event) {
 //ALL HANDLERS
 const addHandlers = function () {
   $("#login").on("submit", onLogin)
-  $("#register").on("click", onRegister)
+  $("#register").on("submit", onRegister)
 }
 
 module.exports = {
