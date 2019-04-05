@@ -5,44 +5,45 @@ const store = require("../store")
 
 //REGISTER
 const registerSuccess = function (data) {
-  console.log("Registration was successful!")
+  $("#message").text("Registration was successful!")
   $("form").trigger("reset")
 }
 
 const registerFailure = function (data) {
-  console.log("Registration failed")
+  $("#message").text("Registration failed")
   $("form").trigger("reset")
 }
 
 //LOGIN
 const loginSuccess = function (data) {
-  console.log("Login was successful!", data);
   store.user = data.user
+  $("#message").text("Welcome!")
   $("form").trigger("reset")
+  console.log("ARG");
 }
 
 const loginFailure = function (data) {
-  console.log("Login failed")
+  $("#message").text("Login failed")
   $("form").trigger("reset")
 }
 
 //LOGOUT
 const logoutSuccess = function () {
-  console.log("User has logged out");
+  $("#message").text("You have logged out")
   store.user = null
 }
 
 const logoutFailure = function () {
-  console.log("User logout has failed");
+  $("#message").text("Logout has failed")
 }
 
 const changePasswordSuccess = function () {
-  console.log("Change password success");
+  $("#message").text("Change password success")
   $("form").trigger("reset")
 }
 
 const changePasswordFailure = function () {
-  console.log("Change password failure");
+  $("#message").text("Change password failure")
   $("form").trigger("reset")
 }
 

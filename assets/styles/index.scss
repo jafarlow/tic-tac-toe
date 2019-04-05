@@ -7,8 +7,21 @@ body {
 h1 {
   text-align: center;
 }
+/*
+NEED TO HIDE LOGOUT UNTIL A USER HAS LOGGED IN
+NEED TO HIDE CHANGE PW UNTIL A USER HAS LOGGED IN
+AFTER LOGIN, NEED TO REPLACE LOGIN FIELDS WITH LOGOUT & CHANGE PW
+AFTER LOGIN, NEED TO HIDE REGISTER
 
+NEED TO DISPLAY IT ALL INLINE -- inline flex?
+#logout {
+  display: none;
+}
 
+.text-left {
+  display: none;
+}
+*/
 .game-board {
   width: 600px;
   height: 600px;
