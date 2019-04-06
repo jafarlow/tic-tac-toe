@@ -52,6 +52,9 @@ NEED TO DISPLAY IT ALL INLINE -- inline flex?
 }
 
 .inline-button {
-  display: inline-flex;
-  justify-content: space-between;
+
+}
+
+.inline-button button {
+  display: none;
 }

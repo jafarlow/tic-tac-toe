@@ -19,7 +19,6 @@ const loginSuccess = function (data) {
   store.user = data.user
   $("#message").text("Welcome!")
   $("form").trigger("reset")
-  console.log("ARG");
 }
 
 const loginFailure = function (data) {

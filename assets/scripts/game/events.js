@@ -2,10 +2,15 @@
 
 //REQUIRE LINKS
 const getFormFields = require("./../../../lib/get-form-fields.js")
+const api = require("./api.js")
+const ui = require("./ui.js")
 
 //SET CURRENT PLAYER -- will be updated in the function below based on turn
 let currentPlayer = "X"
 
+const onLogin = function () {
+  $("#start-button").show()
+}
 
 const gameBoard = ["","","","","","","","",""]
 
@@ -44,8 +49,6 @@ const gameOver = function (array) {
   }
 }
 
-
-
 //TILE INTERACTION
 const onChooseTile = function (event) {
   event.preventDefault()
@@ -62,24 +65,42 @@ const onChooseTile = function (event) {
   } else {
     $("#message").text("That cell is taken!")
   }
+
+  const data = gameBoard
+  api.chooseTile(data)
+    .then(ui.chooseTileSuccess)
+    .catch(ui.chooseTileFailure)
 }
 
-//DO THIS PART LAST!!
-/*  api.chooseTile()
-    .then(ui.chooseTileSuccess)
-    .catch(ui.chooseTileFailure)*/
-
+// START GAME
 const onStartGame = function (event) {
   event.preventDefault()
 
   // open the board to interaction
   $(".tile").show()
+  $("#start-button").hide()
+  $("#new-game-button").show()
+  api.startGame()
+    .then(ui.startGameSuccess)
+    .catch(ui.startGameFailure)
+}
+
+// CREATE NEW GAME
+const onNewGame = function (event) {
+  event.preventDefault()
+
+  // clear the board and prepare for new user input
+  const newGameBoard = ["","","","","","","","",""]
+  gameBoard = newGameBoard
+  $(".tile").text("")
 }
 
 //ALL HANDLERS
 const addHandlers = function () {
-  $(".tile").on("click", onChooseTile)
   $("#start-game").on("click", onStartGame)
+  $(".tile").on("click", onChooseTile)
+  $("#login").on("submit", onLogin)
+  $("#new-game-button").on("click", onNewGame)
 }
 
 module.exports = {
