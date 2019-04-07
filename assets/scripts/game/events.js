@@ -38,10 +38,14 @@ const gameOver = function (array) {
     // TURN OFF THE CLICK HANDLER WHEN WINNING
     $(".tile").off("click", onChooseTile)
     $("#new-game-button").show()
+    return true
   } else if (isFull(gameBoard)) {
       $("#message").text("It's a draw")
       $("#new-game-button").show()
+      return true
   } else {
+      // store player value before switching
+      store.player = currentPlayer
       //CHANGE PLAYER
       if (currentPlayer === "X") {
         currentPlayer = "O"
@@ -49,6 +53,7 @@ const gameOver = function (array) {
         currentPlayer = "X"
       }
     $("#message").text("Player " + currentPlayer + "'s turn")
+    return false
   }
 }
 
@@ -57,7 +62,7 @@ const onChooseTile = function (event) {
   event.preventDefault()
 
   const index = $(event.target).data("cell-index")
-  //store.player = currentPlayer
+  let gameStatus = false
   // is the box empty? -- .text getter!
   if ($(event.target).text() === "") {
     // .text setter!
@@ -65,18 +70,14 @@ const onChooseTile = function (event) {
     // update the array index with clicked tile value
     gameBoard[index] = currentPlayer
     // Check the win condition
-    gameOver(gameBoard)
+    gameStatus = gameOver(gameBoard)
   } else {
     $("#message").text("That cell is taken!")
   }
 
-  // const id = store.game //confirmed defined -- store.game is on ui.js
-  //store.index = index
-  // console.log(store);
-  //debugger
-  api.chooseTile(index, currentPlayer, gameOver())
-    .then(ui.chooseTileSuccess)
-    .catch(ui.chooseTileFailure)
+  api.chooseTile(index, store.player, gameStatus)
+  .then(ui.chooseTileSuccess)
+  .catch(ui.chooseTileFailure)
 }
 
 // START FIRST GAME
@@ -96,15 +97,14 @@ const onNewGame = function (event) {
   event.preventDefault()
 
   // clear the board and prepare for new user input
-  const newGameBoard = ["","","","","","","","",""]
-  gameBoard = newGameBoard
+  gameBoard = ["","","","","","","","",""]
   $("#new-game-button").hide()
   $(".tile").text("")
   $(".tile").on("click", onChooseTile)
   $("#message").text("Player " + currentPlayer + "'s turn")
   api.newGame()
-    .then()
-    .catch()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
 }
 
 //ALL HANDLERS

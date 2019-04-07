@@ -23,7 +23,20 @@ const chooseTileFailure = function (response) {
   $("#message").text("Something went wrong with tile selection")
 }
 
+const newGameSuccess = function (response) {
+  store.game = response.game
+  $("#message").text("Player " + currentPlayer + "'s turn")
+}
+
+const newGameFailure = function (response) {
+  $("#message").text("Something went wrong")
+}
+
 module.exports = {
   startGameSuccess,
-  startGameFailure
+  startGameFailure,
+  chooseTileSuccess,
+  chooseTileFailure,
+  newGameSuccess,
+  newGameFailure
 }
