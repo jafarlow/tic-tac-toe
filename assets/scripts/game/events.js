@@ -9,10 +9,6 @@ const store = require("../store")
 //SET CURRENT PLAYER -- will be updated in the function below based on turn
 let currentPlayer = "X"
 
-const onLogin = function () {
-  $("#start-button").show()
-}
-
 let gameBoard = ["","","","","","","","",""]
 
 const gameOver = function (array) {
@@ -107,12 +103,22 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
+// GET GAMES PLAYED
+const onGetGames = function (event) {
+  event.preventDefault()
+
+  api.getGames()
+    .then(ui.getGamesSuccess)
+    .catch(ui.getGamesFailure)
+}
+
+
 //ALL HANDLERS
 const addHandlers = function () {
   $("#start-game").on("click", onStartGame)
   $(".tile").on("click", onChooseTile)
-  $("#login").on("submit", onLogin)
   $("#new-game-button").on("click", onNewGame)
+  $("#get-games").on("click", onGetGames)
 }
 
 module.exports = {
