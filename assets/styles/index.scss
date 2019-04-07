@@ -2,27 +2,30 @@
 
 body {
   width: 80%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
-}
-/*
-NEED TO HIDE LOGOUT UNTIL A USER HAS LOGGED IN
-NEED TO HIDE CHANGE PW UNTIL A USER HAS LOGGED IN
-AFTER LOGIN, NEED TO REPLACE LOGIN FIELDS WITH LOGOUT & CHANGE PW
-AFTER LOGIN, NEED TO HIDE REGISTER
-
-NEED TO DISPLAY IT ALL INLINE -- inline flex?
-#logout {
-  display: none;
+  margin-top: 1rem;
 }
 
-.text-left {
-  display: none;
+h3 {
+
 }
-*/
+
+main {
+  width: 800px;
+  margin: 0 auto;
+}
+
+section {
+
+  margin: 0 auto;
+}
+
 .game-board {
+  margin: 0 auto;
   width: 600px;
   height: 600px;
   border: 1px solid black;
@@ -34,7 +37,10 @@ NEED TO DISPLAY IT ALL INLINE -- inline flex?
   border: 1px solid black;
   justify-content: center;
   align-items: center;
+  //align-content: center;
   display: none; //turn on once Start Game is clicked
+  font-size: 4rem;
+  font-weight: bold;
 }
 
 .modal-header {
@@ -52,9 +58,31 @@ NEED TO DISPLAY IT ALL INLINE -- inline flex?
 }
 
 .inline-button {
+  margin: 1rem auto;
+//  display: inline-flex;
+}
+
+.login-reg-sect {
+  display: inline-flex;
+}
+
+.logout-chg-sect {
+  display: inline-flex;
+}
+
+.logout-chg-sect button, .logout-chg-sect .text-left {
+    justify-content: space-between;
+}
+
+.game-button {
 
 }
 
-.inline-button button {
+.game-button button {
+  display: none;
+  margin: 1rem auto;
+}
+
+#logout, #change-password-modal, #get-games {
   display: none;
 }

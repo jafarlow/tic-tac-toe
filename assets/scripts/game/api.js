@@ -45,8 +45,19 @@ const newGame = function () {
   })
 }
 
+const getGames = function () {
+  return $.ajax({
+    url: config.apiUrl + "/games",
+    method: "GET",
+    headers: {
+      Authorization: "Token token=" + store.user.token
+    }
+  })
+}
+
 module.exports = {
   chooseTile,
   startGame,
-  newGame
+  newGame,
+  getGames
 }

@@ -5,6 +5,8 @@ const getFormFields = require("./../../../lib/get-form-fields.js")
 const api = require("./api")
 const ui = require("./ui")
 
+$("#message").text("Please sign in or register to play")
+
 //REGISTER
 const onRegister = function (event) {
   event.preventDefault()
