@@ -3,32 +3,50 @@
 //REQUIRE LINKS
 const config = require("../config.js")
 const store = require("../store.js")
+const events = require("./events.js")
 
 
-const startGame = function (data) {
+const startGame = function () {
   return $.ajax({
     url: config.apiUrl + "/games",
     method: "POST",
     headers: {
       Authorization: "Token token=" + store.user.token
-    },
-    data: data
+    }
   })
 }
 
-const chooseTile = function (data) {
-
+const chooseTile = function (index, value, gameStatus) {
   return $.ajax({
-    url: config.apiUrl + "/games/" + data.id,
+    url: config.apiUrl + "/games/" + store.game.id,
     method: "PATCH",
     headers: {
       Authorization: "Token token=" + store.user.token
     },
-    data: data
+    data: {
+      "game": {
+        "cell": {
+          "index": index,
+          "value": value
+        },
+        "over": gameStatus
+      }
+    }
+  })
+}
+
+const newGame = function () {
+  return $.ajax({
+    url: config.apiUrl + "/games",
+    method: "POST",
+    headers: {
+      Authorization: "Token token=" + store.user.token
+    }
   })
 }
 
 module.exports = {
   chooseTile,
-  startGame
+  startGame,
+  newGame
 }

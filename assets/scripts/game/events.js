@@ -4,6 +4,7 @@
 const getFormFields = require("./../../../lib/get-form-fields.js")
 const api = require("./api.js")
 const ui = require("./ui.js")
+const store = require("../store")
 
 //SET CURRENT PLAYER -- will be updated in the function below based on turn
 let currentPlayer = "X"
@@ -12,7 +13,7 @@ const onLogin = function () {
   $("#start-button").show()
 }
 
-const gameBoard = ["","","","","","","","",""]
+let gameBoard = ["","","","","","","","",""]
 
 const gameOver = function (array) {
   // determine if gameBoard has been filled with X or O
@@ -36,8 +37,10 @@ const gameOver = function (array) {
     $("#message").text("Player " + currentPlayer + " wins!")
     // TURN OFF THE CLICK HANDLER WHEN WINNING
     $(".tile").off("click", onChooseTile)
+    $("#new-game-button").show()
   } else if (isFull(gameBoard)) {
       $("#message").text("It's a draw")
+      $("#new-game-button").show()
   } else {
       //CHANGE PLAYER
       if (currentPlayer === "X") {
@@ -53,33 +56,36 @@ const gameOver = function (array) {
 const onChooseTile = function (event) {
   event.preventDefault()
 
+  const index = $(event.target).data("cell-index")
+  //store.player = currentPlayer
   // is the box empty? -- .text getter!
   if ($(event.target).text() === "") {
     // .text setter!
     $(event.target).text(currentPlayer)
     // update the array index with clicked tile value
-    const index = $(event.target).data("id")
     gameBoard[index] = currentPlayer
     // Check the win condition
-    gameOver()
+    gameOver(gameBoard)
   } else {
     $("#message").text("That cell is taken!")
   }
 
-  const data = gameBoard
-  api.chooseTile(data)
+  // const id = store.game //confirmed defined -- store.game is on ui.js
+  //store.index = index
+  // console.log(store);
+  //debugger
+  api.chooseTile(index, currentPlayer, gameOver())
     .then(ui.chooseTileSuccess)
     .catch(ui.chooseTileFailure)
 }
 
-// START GAME
+// START FIRST GAME
 const onStartGame = function (event) {
   event.preventDefault()
 
   // open the board to interaction
   $(".tile").show()
   $("#start-button").hide()
-  $("#new-game-button").show()
   api.startGame()
     .then(ui.startGameSuccess)
     .catch(ui.startGameFailure)
@@ -92,7 +98,13 @@ const onNewGame = function (event) {
   // clear the board and prepare for new user input
   const newGameBoard = ["","","","","","","","",""]
   gameBoard = newGameBoard
+  $("#new-game-button").hide()
   $(".tile").text("")
+  $(".tile").on("click", onChooseTile)
+  $("#message").text("Player " + currentPlayer + "'s turn")
+  api.newGame()
+    .then()
+    .catch()
 }
 
 //ALL HANDLERS
@@ -104,5 +116,6 @@ const addHandlers = function () {
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  gameOver
 }
