@@ -10,8 +10,8 @@ h1 {
   margin-top: 1rem;
 }
 
-h3 {
-
+input {
+  background-color: #f2f9f9;
 }
 
 main {
@@ -26,35 +26,27 @@ section {
 
 .game-board {
   margin: 0 auto;
-  width: 600px;
-  height: 600px;
+  width: 600px; // NOT RESPONSIVE
+  height: 600px; //NOT RESPONSIVE
   border: 1px solid black;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  background-color: #cce5e5
 }
 
 .tile {
   border: 1px solid black;
   justify-content: center;
   align-items: center;
-  //align-content: center;
   display: none; //turn on once Start Game is clicked
   font-size: 4rem;
   font-weight: bold;
+  line-height: 200px; // NOT RESPONSIVE
 }
 
-.modal-header {
-  text-align: center;
-}
-
-.modal-title {
-  width: 100%;
-  font-weight: bold;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: center;
+.game-button button {
+  display: none;
+  margin: 1rem auto;
 }
 
 .inline-button {
@@ -62,25 +54,26 @@ section {
 //  display: inline-flex;
 }
 
-.login-reg-sect {
-  display: inline-flex;
-}
-
 .logout-chg-sect {
   display: inline-flex;
 }
 
 .logout-chg-sect button, .logout-chg-sect .text-left {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
-.game-button {
-
+.login-reg-sect {
+  display: inline-flex;
 }
 
-.game-button button {
-  display: none;
-  margin: 1rem auto;
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-title {
+  width: 100%;
+  font-weight: bold;
 }
 
 #logout, #change-password-modal, #get-games {
