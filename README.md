@@ -1,5 +1,6 @@
 Tic-Tac-Toe Project!
 
+Live page: https://jafarlow.github.io/tic-tac-toe/
 
 This is built with HTML, CSS, and JavaScript.
 
