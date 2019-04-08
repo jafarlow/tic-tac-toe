@@ -93,11 +93,12 @@ const onNewGame = function (event) {
   event.preventDefault()
 
   // clear the board and prepare for new user input
-  gameBoard = ["","","","","","","","",""]
+  const newGameBoard = ["","","","","","","","",""]
+  gameBoard = newGameBoard
   $("#new-game-button").hide()
   $(".tile").text("")
   $(".tile").on("click", onChooseTile)
-  $("#message").text("Player " + currentPlayer + "'s turn")
+  currentPlayer = "X"
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
