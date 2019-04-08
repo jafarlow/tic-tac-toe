@@ -1,4 +1,4 @@
-Tic-Tac-Toe project!
+Tic-Tac-Toe Project!
 
 
 This is built with HTML, CSS, and JavaScript.
