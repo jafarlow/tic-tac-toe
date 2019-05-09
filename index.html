@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <main>
+        <h1>Tic Tac Toe</h1>
+
+          <!--buttons at the top of the window-->
+          <section class="inline-button">
+            <div class="login-reg-sect">
+              <form id="login">
+                <input type="email" name="credentials[email]" placeholder="email" required>
+                <input type="password" name="credentials[password]" placeholder="********" required>
+                <button type="submit">Login</button>
+              </form>
+
+              <!--MODAL REGISTER FORM PULLED FROM BOOTSTRAP-->
+              <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <h4 class="modal-title">Register</h4>
+                      <!--this puts the "x" in the corner-->
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <form id="register">
+                      <input type="email" class="form-control validate" name="credentials[email]" placeholder="Register with fake email" required>
+                      <input type="password" class="form-control validate" name="credentials[password]" placeholder="Choose password" required>
+                      <input type="password" class="form-control validate" name="credentials[password_confirmation]" placeholder="Confirm password" required>
+                      <button class="modal-footer" type="submit">Register</button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-left">
+                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm" id="register-modal">Register</a>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="inline-button">
+            <div class="logout-chg-sect">
+              <button type="button" id="logout">Logout</button>
+
+              <!--MODAL CHANGE PASSWORD FORM PULLED FROM BOOTSTRAP-->
+              <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <h4 class="modal-title">Change password</h4>
+                      <!--this puts the "x" in the corner-->
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <form id="change-password">
+                        <input type="password" class="form-control validate" name="passwords[old]" placeholder="Current password" required>
+                        <input type="password" class="form-control validate" name="passwords[new]" placeholder="New password" required>
+                      <button class="modal-footer" type="submit">Submit</button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-left">
+                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalChangePassword" id="change-password-modal">Change password</a>
+              </div>
+
+              <button type="button" id="get-games">Total games played</button>
+            </div>
+          </section>
+        <!--message to user-->
+        <h3 id="message"></h3>
+
+        <div class="game-button">
+          <!--START GAME BUTTON-->
+          <form id="start-game">
+            <button type="button" id="start-button">START GAME</button>
+          </form>
+          <!--NEW GAME BUTTON-->
+          <form id="new-game">
+            <button type="button" id="new-game-button">NEW GAME</button>
+          </form>
+        </div>
+        <!--GAME GRID-->
+        <div class="game-board">
+          <div class="tile" data-cell-index="0"></div>
+          <div class="tile" data-cell-index="1"></div>
+          <div class="tile" data-cell-index="2"></div>
+          <div class="tile" data-cell-index="3"></div>
+          <div class="tile" data-cell-index="4"></div>
+          <div class="tile" data-cell-index="5"></div>
+          <div class="tile" data-cell-index="6"></div>
+          <div class="tile" data-cell-index="7"></div>
+          <div class="tile" data-cell-index="8"></div>
+        </div>
+      </main>
+
+    </body>
+</html>
