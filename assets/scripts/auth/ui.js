@@ -42,6 +42,8 @@ const logoutSuccess = function () {
   $("#logout").hide()
   $("#change-password-modal").hide()
   $("#get-games").hide()
+  $(".tile").hide()
+  $("#new-game-button").hide()
 }
 
 const logoutFailure = function () {
